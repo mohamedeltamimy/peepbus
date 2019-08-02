@@ -5,14 +5,19 @@ import {
     createAppContainer
 } from 'react-navigation';
 import {
-    SplashWindow
+    SplashWindow,
+    HomeWindow,
+    SideMenu,
+    LoginWindow,
+    ForgetPasswordWindow,
+    VerficationWindow,
+    ChangePasswordWindow
 } from './screens';
 import { Dimensions, View } from 'react-native';
 import { L, isRTL } from '../i18n';
 import AsyncStorage from '@react-native-community/async-storage';
 
 class WindowStack extends Component {
-
 
     state = {
         WindowStack: <View />
@@ -22,7 +27,7 @@ class WindowStack extends Component {
         const lang = await AsyncStorage.getItem('lang');
         const initLang = lang || "en";
 
-        await strings.setLanguage(initLang);
+        await L.setLanguage(initLang);
         AsyncStorage.setItem('lang', initLang);
 
        const Drawer = createDrawerNavigator({
@@ -44,9 +49,27 @@ class WindowStack extends Component {
             },
             HomeWindow: {
                 screen: Drawer
+            },
+            LoginWindow: {
+                screen: LoginWindow,
+                navigationOptions: {
+                    header: null
+                }
+            },
+            ForgetPasswordWindow: {
+                screen: ForgetPasswordWindow
+            },
+            VerficationWindow: {
+                screen: VerficationWindow
+            },
+            ChangePasswordWindow: {
+                screen: ChangePasswordWindow
             }
         }, {
-            initialRouteName: "SplashWindow"
+            initialRouteName: "SplashWindow",
+            defaultNavigationOptions: {
+                header: null
+            }
         });
     
         const AppContainer = createAppContainer(MainWindowStack);

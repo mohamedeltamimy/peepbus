@@ -7,7 +7,7 @@ let L = new i18n({
 });
 
 const isRTL = () => {
-    return strings.getLanguage() === "ar";
+    return L.getLanguage() === "ar";
 }
 
 export { L, i18n, isRTL };

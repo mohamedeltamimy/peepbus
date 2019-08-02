@@ -138,9 +138,10 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-vector-icons')
+    implementation project(':react-native-localization')
     implementation project(':react-native-spinkit')
     implementation project(':@react-native-community_async-storage')
-    implementation project(':react-native-localize')
     implementation(project(':react-native-maps')){
        exclude group: 'com.google.android.gms', module: 'play-services-base'
        exclude group: 'com.google.android.gms', module: 'play-services-maps'

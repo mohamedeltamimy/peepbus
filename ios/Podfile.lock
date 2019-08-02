@@ -65,11 +65,11 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
+  - ReactNativeLocalization (2.1.5):
+    - React
   - RNCAsyncStorage (1.6.1):
     - React
   - RNGestureHandler (1.3.0):
-    - React
-  - RNLocalize (1.1.4):
     - React
   - yoga (0.59.9.React)
 
@@ -92,9 +92,9 @@ DEPENDENCIES:
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTVibration (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
+  - ReactNativeLocalization (from `../node_modules/react-native-localization`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
-  - RNLocalize (from `../node_modules/react-native-localize`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga/yoga.podspec`)
 
 SPEC REPOS:
@@ -114,12 +114,12 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-maps"
   react-native-spinkit:
     :path: "../node_modules/react-native-spinkit"
+  ReactNativeLocalization:
+    :path: "../node_modules/react-native-localization"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-community/async-storage"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
-  RNLocalize:
-    :path: "../node_modules/react-native-localize"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga/yoga.podspec"
 
@@ -131,11 +131,11 @@ SPEC CHECKSUMS:
   React: 1d605e098d69bdf08960787f3446f0a9dc2e2ccf
   react-native-maps: bb480348a3fe1e5a811fed1ba3387b329161c5cc
   react-native-spinkit: c9f5826e1a0bf0da889b3795278eb96ae15c1350
+  ReactNativeLocalization: 0b80bc9ea2e7ea05b7cbdc38fe42d2e2bf5cccf9
   RNCAsyncStorage: e99188b8a89ea0edddc82d8831cd5142f4550fdc
   RNGestureHandler: 7ccf2f3f60458e084f9ada01fbaf610f6fef073c
-  RNLocalize: fb8f1e17914d7251dc221374b486f4cb532aa7de
   yoga: 128daf064cacaede0c3bb27424b6b4c71052e6cd
 
-PODFILE CHECKSUM: efe452d80bc06a53f6115ffe1c484e826a997c01
+PODFILE CHECKSUM: 12052fc4e2edbe403764fb75c0eda470ace2dc61
 
 COCOAPODS: 1.5.3

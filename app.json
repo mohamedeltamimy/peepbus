@@ -1,4 +1,10 @@
 {
   "name": "BeepBus",
-  "displayName": "BeepBus"
+  "displayName": "BeepBus",
+  "color": "#0063F4",
+  "fonts": {
+    "bold": "Roboto-Bold",
+    "regluar": "Roboto-Regular",
+    "medium": "Roboto-Medium"
+  }
 }
