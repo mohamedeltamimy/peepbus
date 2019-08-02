@@ -18,5 +18,14 @@ export default {
     "chnagePasswordWindowSubTitle": "New password 8 characters",
     "newPasswordPlaceHolder": "New passowrd",
     "rePasswordPlaceHolder": "Re-Password",
-    "changePasswordButtonTitle": "Change Password"
+    "changePasswordButtonTitle": "Change Password",
+    "isThisTheHomeLocationText": "Is this the home location ?",
+    'isThisTheHomeLocationSubText': "If the location of the house is wrong please modify the location",
+    "editHomeLocationButtonTitle": "Edit Home location",
+    "yesThishomeLocationButtonTitle": "Yes this home location",
+    "startTitle": "Start",
+    "myChildrenTitle": "My children",
+    "setHomeLocationTitle": "Set home location",
+    "profileTitle": "Profile",
+    "logoutTitle": "logout"
 };

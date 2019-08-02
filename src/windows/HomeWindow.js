@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
-import { HeaderView } from '../components';
+import { HeaderView, ModifyHomeCard } from '../components';
 import MapView from 'react-native-maps';
 
 class HomeWindow extends Component {
@@ -13,6 +13,7 @@ class HomeWindow extends Component {
                 <View style={headerView}>
                     <HeaderView initMenu />
                 </View>
+                <ModifyHomeCard />
             </View>
         )
     }
