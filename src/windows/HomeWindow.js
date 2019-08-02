@@ -1,18 +1,36 @@
 import React, {Component} from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Dimensions } from 'react-native';
+import { HeaderView } from '../components';
+import MapView from 'react-native-maps';
 
 class HomeWindow extends Component {
     render() {
-        const { contanier } = styles;
+        const { contanier, mapView, headerView } = styles;
         return (
-            <View style={contanier}></View>
+            <View style={contanier}>
+           
+                <MapView style={mapView} />
+                <View style={headerView}>
+                    <HeaderView initMenu />
+                </View>
+            </View>
         )
     }
 }
 
+const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
     contanier: {
         flex: 1
+    },
+    mapView: {
+        flex: 1
+    },
+    headerView: {
+        position: 'absolute', 
+        top: 0, 
+        height: 70, 
+        width: width
     }
 });
 

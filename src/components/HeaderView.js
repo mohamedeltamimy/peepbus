@@ -2,7 +2,7 @@ import React , {Component} from 'react';
 import { Icon } from './';
 import { withNavigation } from 'react-navigation';
 import { Appbar } from 'react-native-paper';
-import { fonts } from '../../app.json';
+import { fonts, color } from '../../app.json';
 
 class ToolBarComponent extends Component {
 
@@ -10,15 +10,21 @@ class ToolBarComponent extends Component {
         const { pop } = this.props.navigation;
         pop();
     }
+
+    _toggleMenu = () => {
+        const { toggleDrawer } = this.props.navigation;
+        toggleDrawer();
+    }
   
     render() {
     const { contanier, titleStyle, subtitleStyle } = styles;
-    const { title, subtitle } = this.props;
+    const { title, subtitle, initMenu } = this.props;
       return (
         <Appbar.Header style={contanier}>
-          <Appbar.BackAction
+          {!initMenu ? <Appbar.BackAction
             onPress={this._goBack}
-          />
+          /> : <Appbar.Action onPress={this._toggleMenu} icon={'menu'} color={color} size={30} />}
+          
           <Appbar.Content
             titleStyle={titleStyle}
             subtitleStyle={subtitleStyle}
@@ -34,7 +40,7 @@ class ToolBarComponent extends Component {
 
 const styles = {
     contanier: {
-        backgroundColor: "#ffffff", 
+        backgroundColor: 'transparent', 
         elevation: 0
     },
     titleStyle: {

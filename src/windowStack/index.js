@@ -36,8 +36,7 @@ class WindowStack extends Component {
             contentComponent: SideMenu,
             drawerPosition: isRTL() ? 'right' : 'left',
             drawerBackgroundColor: "#fff",
-            drawerWidth: width - 50,
-            drawerType: 'back'
+            drawerWidth: width - 50
         });
         
         const MainWindowStack = createStackNavigator({

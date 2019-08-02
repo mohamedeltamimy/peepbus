@@ -36,7 +36,11 @@ class LoginWindow extends Component {
                         <Button 
                             contentStyle={buttonContanier}
                             style={loginButton}
-                            title={L['signInButtonText']} />
+                            title={L['signInButtonText']}
+                            onPress={() => {
+                                const { replace } = this.props.navigation;
+                                replace('HomeWindow');
+                            }} />
 
                         <View style={forgetPasswordView}>
                             <Button 
