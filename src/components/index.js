@@ -9,3 +9,4 @@ export * from './Icon';
 export * from './FooterView';
 export * from './ModifyHomeCard';
 export * from './ListView';
+export * from './ChildView';

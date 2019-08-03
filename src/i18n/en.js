@@ -27,5 +27,8 @@ export default {
     "myChildrenTitle": "My children",
     "setHomeLocationTitle": "Set home location",
     "profileTitle": "Profile",
-    "logoutTitle": "logout"
+    "logoutTitle": "logout",
+    "tripStartedText": "Trip Started",
+    "busArrivedText": "Bus arrived",
+    "tripEndedText": "Trip ended"
 };
