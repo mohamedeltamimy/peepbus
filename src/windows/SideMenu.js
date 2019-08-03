@@ -15,10 +15,12 @@ class SideMenu extends Component {
             pageKey: "MyChildrenWindow"
         },{
             image: require('../assets/home.png'),
-            title: L['setHomeLocationTitle']
+            title: L['setHomeLocationTitle'],
+            pageKey: "SetHomeLocationWindow"
         },{
             image: require('../assets/profile.png'),
-            title: L['profileTitle']
+            title: L['profileTitle'],
+            pageKey: 'ProfileWindow'
         },{
             image: require('../assets/logout.png'),
             title: L['logoutTitle']
@@ -30,7 +32,8 @@ class SideMenu extends Component {
         const { image, title, pageKey } = item.item;
         return (
             <ClickAbleView disabled={!pageKey} style={itemContanier} onPress={() => {
-                const { push } = this.props.navigation;
+                const { push, toggleDrawer } = this.props.navigation;
+                toggleDrawer();
                 push(pageKey);
             }}>
                 <Image style={itemImage} source={image} />

@@ -7,16 +7,28 @@ import { color } from '../../../app.json';
 
 class ChangePasswordWindow extends Component {
 
-    state = {}
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            normalChangePassword: props.navigation.getParam('normalChangePassword')
+        }
+    }
 
     render() {
         const { contanier, contentView, usernameTextField, passwordTextField, buttonContanier, loginButton } = styles;
-        const { password, confirmPassword } = this.state;
+        const { oldPassword, password, confirmPassword, normalChangePassword } = this.state;
         return (
             <View style={contanier}>
-                <HeaderView title={L['chnagePasswordWindowTitle']} subtitle={L['chnagePasswordWindowSubTitle']} />
+                <HeaderView title={L['chnagePasswordWindowTitle']} subtitle={!normalChangePassword  && L['chnagePasswordWindowSubTitle']} />
                 <FooterView />
                 <View style={contentView}>
+                    {normalChangePassword && <TextInput 
+                        style={usernameTextField}
+                        label={L['oldPasswordPlaceHolder']}
+                        value={oldPassword}
+                        secureTextEntry
+                        onChangeText={(oldPassword) => this.setState({oldPassword})} />}
                     <TextInput 
                         style={usernameTextField}
                         label={L['newPasswordPlaceHolder']}

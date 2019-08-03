@@ -31,5 +31,10 @@ export default {
     "tripStartedText": "Trip Started",
     "busArrivedText": "Bus arrived",
     "tripEndedText": "Trip ended",
-    "myChildrenWindowTitle": "My children"
+    "myChildrenWindowTitle": "My children",
+    "setHomeLocationWindowTitle": "Edit home location",
+    "setHomeLocaitonButtonTitle": "Set home location",
+    "myProfileWindowTitle": "Profile",
+    "passwordText": "Password",
+    "oldPasswordPlaceHolder": "Old password"
 };

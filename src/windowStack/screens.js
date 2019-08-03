@@ -6,3 +6,5 @@ export * from '../windows/ForgetPasswordFlow/ForgetPasswordWindow';
 export * from '../windows/ForgetPasswordFlow/VerficationWindow';
 export * from '../windows/ForgetPasswordFlow/ChangePasswordWindow';
 export * from '../windows/MyChildrenWindow';
+export * from '../windows/SetHomeLocationWindow';
+export * from '../windows/ProfileWindow';
