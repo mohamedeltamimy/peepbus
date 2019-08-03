@@ -30,5 +30,6 @@ export default {
     "logoutTitle": "logout",
     "tripStartedText": "Trip Started",
     "busArrivedText": "Bus arrived",
-    "tripEndedText": "Trip ended"
+    "tripEndedText": "Trip ended",
+    "myChildrenWindowTitle": "My children"
 };

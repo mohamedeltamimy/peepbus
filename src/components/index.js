@@ -10,3 +10,4 @@ export * from './FooterView';
 export * from './ModifyHomeCard';
 export * from './ListView';
 export * from './ChildView';
+export * from './ClickAbleView';

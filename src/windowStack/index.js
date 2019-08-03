@@ -11,7 +11,8 @@ import {
     LoginWindow,
     ForgetPasswordWindow,
     VerficationWindow,
-    ChangePasswordWindow
+    ChangePasswordWindow,
+    MyChildrenWindow
 } from './screens';
 import { Dimensions, View } from 'react-native';
 import { L, isRTL } from '../i18n';
@@ -63,6 +64,9 @@ class WindowStack extends Component {
             },
             ChangePasswordWindow: {
                 screen: ChangePasswordWindow
+            },
+            MyChildrenWindow: {
+                screen: MyChildrenWindow
             }
         }, {
             initialRouteName: "SplashWindow",

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { View, StyleSheet, Image } from 'react-native';
-import { ListView, TextMedium, TextBold, SafeAreaView } from '../components'; 
+import { ListView, TextMedium, TextBold, SafeAreaView, ClickAbleView } from '../components'; 
 import { L } from '../i18n';
 
 class SideMenu extends Component {
@@ -11,7 +11,8 @@ class SideMenu extends Component {
             title: L['startTitle']
         },{
             image: require('../assets/children.png'),
-            title: L['myChildrenTitle']
+            title: L['myChildrenTitle'],
+            pageKey: "MyChildrenWindow"
         },{
             image: require('../assets/home.png'),
             title: L['setHomeLocationTitle']
@@ -26,12 +27,15 @@ class SideMenu extends Component {
 
     renderItem(item) {
         const { itemContanier, itemImage, itemTitle } = styles;
-        const { image, title } = item.item;
+        const { image, title, pageKey } = item.item;
         return (
-            <View style={itemContanier}>
+            <ClickAbleView disabled={!pageKey} style={itemContanier} onPress={() => {
+                const { push } = this.props.navigation;
+                push(pageKey);
+            }}>
                 <Image style={itemImage} source={image} />
                 <TextMedium style={itemTitle}>{title}</TextMedium>
-            </View>
+            </ClickAbleView>
         )
     }
 

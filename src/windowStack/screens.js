@@ -5,3 +5,4 @@ export * from '../windows/LoginWindow';
 export * from '../windows/ForgetPasswordFlow/ForgetPasswordWindow';
 export * from '../windows/ForgetPasswordFlow/VerficationWindow';
 export * from '../windows/ForgetPasswordFlow/ChangePasswordWindow';
+export * from '../windows/MyChildrenWindow';
