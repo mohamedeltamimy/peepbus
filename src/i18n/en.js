@@ -36,5 +36,7 @@ export default {
     "setHomeLocaitonButtonTitle": "Set home location",
     "myProfileWindowTitle": "Profile",
     "passwordText": "Password",
-    "oldPasswordPlaceHolder": "Old password"
+    "oldPasswordPlaceHolder": "Old password",
+    "homeAddressText": "Home address",
+    "schoolAddressText": "School address"
 };

@@ -8,3 +8,4 @@ export * from '../windows/ForgetPasswordFlow/ChangePasswordWindow';
 export * from '../windows/MyChildrenWindow';
 export * from '../windows/SetHomeLocationWindow';
 export * from '../windows/ProfileWindow';
+export * from '../windows/ChildProfileWindow';

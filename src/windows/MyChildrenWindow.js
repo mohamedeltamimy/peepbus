@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { View, StyleSheet, Image } from 'react-native';
-import { HeaderView, FooterView, TextBold, ListView } from '../components';
+import { HeaderView, FooterView, TextBold, ListView, ClickAbleView } from '../components';
 import { L } from '../i18n';
 import { Card } from 'react-native-paper';
 
@@ -10,12 +10,15 @@ class MyChildrenWindow extends Component {
         const { itemContanier, itemContentView, userAvatarView, userAvatarImage, userNameText } = styles;
         return (
             <Card style={itemContanier}>
-                <View style={itemContentView}>
+                <ClickAbleView style={itemContentView} onPress={() => {
+                    const { push } = this.props.navigation;
+                    push('ChildProfileWindow');
+                }}>
                     <View style={userAvatarView}>
                         <Image style={userAvatarImage} source={require('../assets/userAvatar.png')} />
                     </View>
                     <TextBold style={userNameText}>{'Mahmoud Elmoghazy'}</TextBold>
-                </View>
+                </ClickAbleView>
             </Card>
         )
     }

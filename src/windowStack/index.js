@@ -14,7 +14,8 @@ import {
     ChangePasswordWindow,
     MyChildrenWindow,
     SetHomeLocationWindow,
-    ProfileWindow
+    ProfileWindow,
+    ChildProfileWindow
 } from './screens';
 import { Dimensions, View } from 'react-native';
 import { L, isRTL } from '../i18n';
@@ -75,6 +76,9 @@ class WindowStack extends Component {
             },
             ProfileWindow: {
                 screen: ProfileWindow
+            },
+            ChildProfileWindow: {
+                screen: ChildProfileWindow
             }
         }, {
             initialRouteName: "SplashWindow",
