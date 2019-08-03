@@ -7,6 +7,7 @@ import { L } from '../i18n';
 class ModifyHomeCard extends Component {
     render() {
         const { contanier, headerText, headerSubText, editHomeLocationButton, yesThishomeLocationButton } = styles;
+        const { confirmHomeAddressButtonPressed } = this.props;
         return (
             <Card style={contanier}>
                 <TextBold style={headerText}>{L['isThisTheHomeLocationText']}</TextBold>
@@ -20,7 +21,8 @@ class ModifyHomeCard extends Component {
                     mode={'text'}
                     color={"#313131"}
                     style={yesThishomeLocationButton}
-                    title={L['yesThishomeLocationButtonTitle']} />
+                    title={L['yesThishomeLocationButtonTitle']}
+                    onPress={confirmHomeAddressButtonPressed} />
             </Card>
         )
     }

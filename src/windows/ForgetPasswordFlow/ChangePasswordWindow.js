@@ -3,7 +3,7 @@ import { View, StyleSheet, Dimensions } from 'react-native';
 import { TextInput, Button, HeaderView, FooterView } from '../../components';
 import { L } from '../../i18n';
 import { color } from '../../../app.json';
-
+import { NavigationActions, StackActions } from "react-navigation";
 
 class ChangePasswordWindow extends Component {
 
@@ -46,7 +46,20 @@ class ChangePasswordWindow extends Component {
                         uppercase={false}
                         contentStyle={buttonContanier}
                         style={loginButton}
-                        title={L['changePasswordButtonTitle']} />
+                        title={L['changePasswordButtonTitle']}
+                        onPress={() => {
+                            let resetActionParams = {
+                                index: 0,
+                                actions: [
+                                    NavigationActions.navigate({ routeName: "LoginWindow" })
+                                ]
+                            };
+
+                            const resetAction = StackActions.reset(resetActionParams);
+                            
+                            const { dispatch } = this.props.navigation;
+                            dispatch(resetAction);
+                        }} />
                 </View>
             </View>
         )

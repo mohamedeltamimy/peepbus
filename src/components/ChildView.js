@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import { View, StyleSheet, Dimensions, Image } from 'react-native';
 import { Card } from 'react-native-paper';
-import { Text, TextBold, Button, Icon } from './';
+import { Text, TextBold, Icon } from './';
 import { L } from '../i18n';
+import { color } from '../../app.json';
+import { ClickAbleView } from './ClickAbleView';
 
 const StatusView = ({icon, text}) => {
     const { statusContanierView, statusIcon, stautsText } = styles;
@@ -16,7 +18,8 @@ const StatusView = ({icon, text}) => {
 
 class ChildView extends Component {
     render() {
-        const { contanier, childImageNameView, userAvatarView, userAvatarImage, userNameText, sepratorView, secondSeprator } = styles;
+        const { contanier, childImageNameView, userAvatarView, userAvatarImage, userNameText, sepratorView, secondSeprator, driverView,
+            driverAvatarImage, driverInfoView, driverText, busNumberView, busIcon, busNumberText, callButton, callImage } = styles;
         return (
             <Card style={contanier}>
                 <View style={childImageNameView}>
@@ -34,6 +37,23 @@ class ChildView extends Component {
                 <View style={[sepratorView, secondSeprator]} />
                 <View style={[sepratorView, secondSeprator]} />
                 <StatusView icon={"md-time"} text={L['tripEndedText']} />
+                <View style={driverView}>
+                    <View style={userAvatarView}>
+                        <Image style={driverAvatarImage} source={{
+                            uri: "https://secure.i.telegraph.co.uk/multimedia/archive/03497/Good_Samaratin_bus_3497986b.jpg"
+                        }} />
+                    </View>
+                    <View style={driverInfoView}>
+                        <TextBold style={driverText}>{'Mahmoud Mostafa'}</TextBold>
+                        <View style={busNumberView}>
+                            <Icon icon={"md-bus"} style={busIcon} />
+                            <Text style={busNumberText}>{'145 FET'}</Text>
+                        </View>
+                    </View>
+                    <ClickAbleView style={callButton}>
+                        <Image style={callImage} source={require('../assets/callIcon.png')} />
+                    </ClickAbleView>
+                </View>
             </Card>
         )
     }
@@ -42,15 +62,14 @@ class ChildView extends Component {
 const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
     contanier: {
-        position: 'absolute',
-        height: 186,
+        height: 295,
         width: 312,
         backgroundColor: "#ffffff",
-        bottom: 20,
         alignSelf: 'center',
         borderRadius: 8,
         elevation: 5,
-        padding: 16
+        padding: 16,
+        marginLeft: 10
     },
     headerText: {
         fontSize: 20,
@@ -83,6 +102,11 @@ const styles = StyleSheet.create({
         width: 24,
         height: 33
     },
+    driverAvatarImage: {
+        height: 48,
+        width: 48,
+        borderRadius: 20
+    },
     userNameText: {
         marginLeft: 16,
         color: "#313131",
@@ -110,6 +134,41 @@ const styles = StyleSheet.create({
     },
     secondSeprator: {
         marginTop: 3
+    },
+    driverView: {
+        flexDirection: 'row',
+        marginTop: 20
+    },
+    driverText: {
+        color: "#313131",
+        fontSize: 20
+    },
+    driverInfoView: {
+        marginLeft: 19
+    }, 
+    busNumberView: {
+        flexDirection: 'row',
+        marginTop: 3,
+        alignItems: 'center'
+    }, 
+    busIcon: {
+        fontSize: 20,
+        color: color
+    }, 
+    busNumberText: {
+        color: "#313131",
+        fontSize: 14,
+        marginLeft: 8
+    },
+    callButton: {
+        width: 38,
+        height: 50,
+        position: 'absolute',
+        right: 0
+    }, 
+    callImage: {
+        width: 38,
+        height: 50
     }
 });
 

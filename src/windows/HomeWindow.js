@@ -1,11 +1,21 @@
 import React, {Component} from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
-import { HeaderView, ModifyHomeCard, ChildView } from '../components';
+import { View, StyleSheet, Dimensions, LayoutAnimation } from 'react-native';
+import { HeaderView, ModifyHomeCard, ChildView, ListView } from '../components';
 import MapView from 'react-native-maps';
 
 class HomeWindow extends Component {
+
+    state = {
+        showChildrenView: false
+    }
+
+    componentDidUpdate() {
+        LayoutAnimation.spring();
+    }
+
     render() {
-        const { contanier, mapView, headerView } = styles;
+        const { contanier, mapView, headerView, listView } = styles;
+        const { showChildrenView } = this.state;
         return (
             <View style={contanier}>
            
@@ -13,8 +23,15 @@ class HomeWindow extends Component {
                 <View style={headerView}>
                     <HeaderView initMenu />
                 </View>
-                {/* <ModifyHomeCard /> */}
-                <ChildView />
+
+                {showChildrenView && <ListView 
+                    style={listView}
+                    horizontal
+                    data={[{}, {}]}
+                    renderItem={() => <ChildView />}
+                />}
+
+                {!showChildrenView && <ModifyHomeCard confirmHomeAddressButtonPressed={() => this.setState({showChildrenView: true})} />}
             </View>
         )
     }
@@ -33,6 +50,13 @@ const styles = StyleSheet.create({
         top: 0, 
         height: 70, 
         width: width
+    },
+    listView: {
+        position: 'absolute',
+        bottom: 20,
+        height: 295,
+        backgroundColor: 'transparent',
+        padding: 10
     }
 });
 
