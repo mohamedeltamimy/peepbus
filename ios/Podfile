@@ -39,7 +39,6 @@ target 'BeepBus' do
 
   pod 'react-native-maps', path: rn_maps_path
 
-
   pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
 
   pod 'react-native-spinkit', :path => '../node_modules/react-native-spinkit'
@@ -47,6 +46,8 @@ target 'BeepBus' do
   pod 'ReactNativeLocalization', :path => '../node_modules/react-native-localization'
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
+  pod 'react-native-spinkit', :path => '../node_modules/react-native-spinkit'
 
 end
 

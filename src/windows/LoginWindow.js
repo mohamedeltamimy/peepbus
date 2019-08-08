@@ -1,17 +1,47 @@
 import React, {Component} from 'react';
 import { View, StyleSheet, Dimensions, Image } from 'react-native';
-import { TextBold, Text, SafeAreaView, TextInput, Button } from '../components';
+import { TextBold, Text, SafeAreaView, TextInput, Button, Spinner } from '../components';
 import { L } from '../i18n';
 import { color } from '../../app.json';
-
+import { Login } from '../models';
+import { ShowMessage } from '../lib';
+import FlashMessage from 'react-native-flash-message';
+import AsyncStorage from '@react-native-community/async-storage';
 
 class LoginWindow extends Component {
 
     state = {}
 
+    loginButtonPressed() {
+        const { username, password } = this.state;
+        if(!username) {
+            this.setState({usernameError: true});
+            return;
+        }
+
+        if(!password) {
+            this.setState({passwordError: true});
+            return;
+        }
+
+        this.setState({loading: true});
+        Login({username: username, password: password}, {
+            success: (result) => {
+                this.setState({loading: false});
+                AsyncStorage.setItem('user_token', result.response.user_token.access_token);
+                const { replace } = this.props.navigation;
+                replace('HomeWindow');
+            },
+            error: () => {
+                ShowMessage(this.refs.flashMessage, L['loginErrorTitle'], L['loginErrorMessage'], 'error');
+                this.setState({loading: false});
+            }
+        });
+    }
+
     render() {
         const { contanier, introText, introSubText, usernameTextField, passwordTextField, buttonContanier, loginButton, blueImage, busIcon, forgetPasswordView, forgetPasswordButton } = styles;
-        const { username, password } = this.state;
+        const { username, password, loading, usernameError, passwordError } = this.state;
         return (
             <SafeAreaView>
                 <View style={contanier}>
@@ -24,23 +54,24 @@ class LoginWindow extends Component {
                         <TextInput 
                             style={usernameTextField}
                             label={L['usernameText']}
+                            errorMessage={L['usernameErrorMessage']}
                             value={username}
-                            onChangeText={(username) => this.setState({username})} />
+                            error={usernameError}
+                            onChangeText={(username) => this.setState({username: username, usernameError: false})} />
                         <TextInput 
                             style={passwordTextField}
                             label={L['passwordText']}
+                            errorMessage={L['passwordErrorMessage']}
                             value={password}
+                            error={passwordError}
                             secureTextEntry
-                            onChangeText={(password) => this.setState({password})} />
+                            onChangeText={(password) => this.setState({password: password, passwordError: false})} />
                         
                         <Button 
                             contentStyle={buttonContanier}
                             style={loginButton}
                             title={L['signInButtonText']}
-                            onPress={() => {
-                                const { replace } = this.props.navigation;
-                                replace('HomeWindow');
-                            }} />
+                            onPress={() => this.loginButtonPressed()} />
 
                         <View style={forgetPasswordView}>
                             <Button 
@@ -55,6 +86,8 @@ class LoginWindow extends Component {
                                 }} />
                         </View>
                     </View>
+                    {loading && <Spinner />}
+                    <FlashMessage ref={'flashMessage'} />
                 </View>
             </SafeAreaView>
         )

@@ -24,4 +24,19 @@ function ToolbarHeight() {
 
 }
 
-export { ToolbarHeight } ;
+const GetUser = () => {
+
+}
+
+const ShowMessage = (refs, title, message, type) => {
+    refs.showMessage({
+        message: title,
+        description: message,
+        type: type === "success" ? "success" : "danger",
+        duration: 5000,
+        floating: true
+      });
+}
+
+
+export { ToolbarHeight, GetUser, ShowMessage } ;

@@ -38,5 +38,12 @@ export default {
     "passwordText": "Password",
     "oldPasswordPlaceHolder": "Old password",
     "homeAddressText": "Home address",
-    "schoolAddressText": "School address"
+    "schoolAddressText": "School address",
+    "loadingMessage": "Loading...",
+    "loginValidationTitle": "Opps !",
+    "loginValidationMessage": "Enter valid username and password",
+    "loginErrorTitle": "Opps !",
+    "loginErrorMessage": "Email or password is wrong !",
+    "usernameErrorMessage": "Enter username",
+    "passwordErrorMessage": "Enter password"
 };
