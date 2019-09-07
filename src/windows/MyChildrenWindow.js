@@ -2,22 +2,37 @@ import React, {Component} from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 import { HeaderView, FooterView, TextBold, ListView, ClickAbleView } from '../components';
 import { L } from '../i18n';
+import { GetParentInfo } from '../lib';
 import { Card } from 'react-native-paper';
 
 class MyChildrenWindow extends Component {
 
-    renderItem() {
+    state = {
+        students: []
+    }
+
+    async componentDidMount() {
+        const parentInfo = await GetParentInfo();
+        if(parentInfo) {
+            this.setState({students: parentInfo.students});
+        }
+    }
+
+    renderItem(item) {
         const { itemContanier, itemContentView, userAvatarView, userAvatarImage, userNameText } = styles;
+        const { name } = item.item;
         return (
             <Card style={itemContanier}>
                 <ClickAbleView style={itemContentView} onPress={() => {
                     const { push } = this.props.navigation;
-                    push('ChildProfileWindow');
+                    push('ChildProfileWindow', {
+                        info: item.item
+                    });
                 }}>
                     <View style={userAvatarView}>
                         <Image style={userAvatarImage} source={require('../assets/userAvatar.png')} />
                     </View>
-                    <TextBold style={userNameText}>{'Mahmoud Elmoghazy'}</TextBold>
+                    <TextBold style={userNameText}>{name}</TextBold>
                 </ClickAbleView>
             </Card>
         )
@@ -31,8 +46,8 @@ class MyChildrenWindow extends Component {
                 <FooterView />
 
                 <ListView 
-                    data={[{}, {}, {}]}
-                    renderItem={() => this.renderItem()}
+                    data={this.state.students}
+                    renderItem={(item) => this.renderItem(item)}
                 />
             </View>
         )

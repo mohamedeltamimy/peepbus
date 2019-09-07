@@ -49,6 +49,14 @@ target 'BeepBus' do
 
   pod 'react-native-spinkit', :path => '../node_modules/react-native-spinkit'
 
+  pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
+
+  pod 'RNShare', :path => '../node_modules/react-native-share'
+
+  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+
+  pod 'RNFS', :path => '../node_modules/react-native-fs'
+
 end
 
 post_install do |installer|

@@ -20,13 +20,15 @@ class ChildView extends Component {
     render() {
         const { contanier, childImageNameView, userAvatarView, userAvatarImage, userNameText, sepratorView, secondSeprator, driverView,
             driverAvatarImage, driverInfoView, driverText, busNumberView, busIcon, busNumberText, callButton, callImage } = styles;
+
+        const { name } = this.props.item.item;
         return (
             <Card style={contanier}>
                 <View style={childImageNameView}>
                     <View style={userAvatarView}>
                         <Image style={userAvatarImage} source={require('../assets/userAvatar.png')} />
                     </View>
-                    <TextBold style={userNameText}>{'Mahmoud Elmoghazy'}</TextBold>
+                    <TextBold style={userNameText}>{name}</TextBold>
                 </View>
                 <StatusView icon={"ios-checkmark-circle-outline"} text={L['tripStartedText']} />
                 <View style={sepratorView} />

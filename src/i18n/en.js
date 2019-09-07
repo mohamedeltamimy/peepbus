@@ -45,5 +45,15 @@ export default {
     "loginErrorTitle": "Opps !",
     "loginErrorMessage": "Email or password is wrong !",
     "usernameErrorMessage": "Enter username",
-    "passwordErrorMessage": "Enter password"
+    "passwordErrorMessage": "Enter password",
+    "fetchPatentIssueTitle": "Something went wrong !",
+    "fetchParentIssueMessage": "we can't fetch your data please check your connection and try again",
+    "retryButtonTitle": "Retry",
+    "changeAddressConfirmationTitle": "Change address !",
+    "changeAddressConfirmationMessage": "Are you sure that you want to choose this address ?",
+    "yesButtonTitle": "Yes",
+    "noButtonTitle": "No",
+    "enterOldPasswordErrorMessage": "Enter old password",
+    "enterNewPasswordErrorMessage": "Enter new password",
+    "enterPasswordNotTheSameErrorMessage": "The passwords not the same"
 };

@@ -3,11 +3,13 @@ import { View, StyleSheet, Dimensions } from 'react-native';
 import { Card } from 'react-native-paper';
 import { Text, TextBold, Button } from './';
 import { L } from '../i18n';
+import { withNavigation } from 'react-navigation';
+import { inject, observer } from "mobx-react";
 
-class ModifyHomeCard extends Component {
+class ModifyHomeCardClass extends Component {
     render() {
         const { contanier, headerText, headerSubText, editHomeLocationButton, yesThishomeLocationButton } = styles;
-        const { confirmHomeAddressButtonPressed } = this.props;
+        const { setHomeAddress } = this.props;
         return (
             <Card style={contanier}>
                 <TextBold style={headerText}>{L['isThisTheHomeLocationText']}</TextBold>
@@ -15,14 +17,20 @@ class ModifyHomeCard extends Component {
                 <Button
                     uppercase={false} 
                     style={editHomeLocationButton}
-                    title={L['editHomeLocationButtonTitle']} />
+                    title={L['editHomeLocationButtonTitle']}
+                    onPress={() => {
+                        const { push } = this.props.navigation;
+                        push('SetHomeLocationWindow', {
+                            type: "update_parent_home"
+                        });
+                    }} />
                 <Button 
                     uppercase={false} 
                     mode={'text'}
                     color={"#313131"}
                     style={yesThishomeLocationButton}
                     title={L['yesThishomeLocationButtonTitle']}
-                    onPress={confirmHomeAddressButtonPressed} />
+                    onPress={setHomeAddress} />
             </Card>
         )
     }
@@ -58,4 +66,10 @@ const styles = StyleSheet.create({
     }
 });
 
-export { ModifyHomeCard };
+const ModifyHomeCardComponent = inject(stores => {
+    return {
+        setHomeAddress: stores.store.userStore.setHomeAddress
+    };
+})(observer(withNavigation(ModifyHomeCardClass)));
+
+export { ModifyHomeCardComponent as ModifyHomeCard };

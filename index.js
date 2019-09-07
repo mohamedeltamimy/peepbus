@@ -1,10 +1,21 @@
-/**
- * @format
- */
-
 import "react-native-gesture-handler";
-import {AppRegistry} from 'react-native';
+import React, {Component} from 'react';
+import { AppRegistry } from 'react-native';
+import { name as appName } from './app.json';
+import { Provider } from "mobx-react";
+import Stores from './src/stores';
 import WindowStack from './src/windowStack';
-import {name as appName} from './app.json';
 
-AppRegistry.registerComponent(appName, () => WindowStack);
+class App extends Component {
+
+   render() {
+
+        return (
+            <Provider store={Stores}>
+                <WindowStack />
+            </Provider>
+        )
+    }
+}
+
+AppRegistry.registerComponent(appName, () => App);

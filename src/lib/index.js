@@ -3,6 +3,7 @@ import {
     Dimensions,
     Platform
 } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 function ToolbarHeight() {
     const {
@@ -24,8 +25,9 @@ function ToolbarHeight() {
 
 }
 
-const GetUser = () => {
-
+const GetUser = async () => {
+    const user = await AsyncStorage.getItem('user_token');
+    return user;
 }
 
 const ShowMessage = (refs, title, message, type) => {
@@ -38,5 +40,10 @@ const ShowMessage = (refs, title, message, type) => {
       });
 }
 
+const GetParentInfo = async () => {
+    const info = await AsyncStorage.getItem('parentInfo');
+    return info ? JSON.parse(info) : "";
+}
 
-export { ToolbarHeight, GetUser, ShowMessage } ;
+
+export { ToolbarHeight, GetUser, ShowMessage, GetParentInfo } ;

@@ -3,10 +3,9 @@ import { View, StyleSheet, Dimensions, Image } from 'react-native';
 import { TextBold, Text, SafeAreaView, TextInput, Button, Spinner } from '../components';
 import { L } from '../i18n';
 import { color } from '../../app.json';
-import { Login } from '../models';
 import { ShowMessage } from '../lib';
+import { inject, observer } from "mobx-react";
 import FlashMessage from 'react-native-flash-message';
-import AsyncStorage from '@react-native-community/async-storage';
 
 class LoginWindow extends Component {
 
@@ -25,10 +24,13 @@ class LoginWindow extends Component {
         }
 
         this.setState({loading: true});
-        Login({username: username, password: password}, {
-            success: (result) => {
+        
+        this.props.login({
+            username: username, 
+            password: password
+        }, {
+            success: () => {
                 this.setState({loading: false});
-                AsyncStorage.setItem('user_token', result.response.user_token.access_token);
                 const { replace } = this.props.navigation;
                 replace('HomeWindow');
             },
@@ -151,4 +153,12 @@ const styles = StyleSheet.create({
     }
 });
 
-export { LoginWindow };
+
+const LoginWindowComponent = inject(stores => {
+    return {
+        login: stores.store.userStore.login,
+        user_token : stores.store.userStore.user_token
+    };
+})(observer(LoginWindow));
+
+export { LoginWindowComponent as LoginWindow };

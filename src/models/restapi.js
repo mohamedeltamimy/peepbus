@@ -8,11 +8,13 @@ import AsyncStorage from '@react-native-community/async-storage';
 const GET = async (url, options, extra) => {
 
   let requestURL = `${baseurl}${url}`;
-  let headers = {};
+  let headers = {
+    lang: "en",
+    client_id: 2
+  };
 
   if (extra && extra.authenticationUser) {
-    const user = await GetUser();
-    const {token, id} = user;
+    const token = await GetUser();
     headers.Authorization = `Bearer ${token}`;
   }
 
@@ -38,7 +40,6 @@ const GET = async (url, options, extra) => {
       }
     })
     .catch(error => {
-      console.log('[Error in request] : ', error);
 
       if (options.error) {
         options.error(error);
@@ -49,13 +50,13 @@ const GET = async (url, options, extra) => {
 // .. post request
 const POST = async(url, params, options, extra) => {
   let headers = {
+    lang: "en",
     client_id: 2
   };
   let requestURL = `${baseurl}${url}`;
 
   if (extra && extra.authenticationUser) {
-    const user = await GetUser();
-    const {token, id} = await user;
+    const token = await GetUser();
     headers.Authorization = `Bearer ${token}`;
   }
 
