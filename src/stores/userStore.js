@@ -1,5 +1,5 @@
-import { Login, GetUserInfo } from '../models';
-import { decorate, action, observable, autorun } from "mobx";
+import { Login, GetUserInfo, SetAddress, UpdateImage } from '../models';
+import { action, observable, autorun } from "mobx";
 import AsyncStorage from '@react-native-community/async-storage';
 
 class UserStore { 
@@ -29,15 +29,18 @@ class UserStore {
 
                 if(user) {
                     this.user = JSON.parse(user);
-                } else {
-                    GetUserInfo({
-                        success: (result) => {
-                            AsyncStorage.setItem('parentInfo', JSON.stringify(result.response));
-                            this.user = result.response;
-                        },
-                        error: () => {}
-                    });
                 }
+                
+                GetUserInfo({
+                    success: (result) => {
+                        console.log(result);
+                        AsyncStorage.setItem('parentInfo', JSON.stringify(result.response));
+                        this.user = result.response;
+                    },
+                    error: () => {}
+                });
+            } else {
+                this.fetching = false;
             }
         })
     }
@@ -65,10 +68,20 @@ class UserStore {
     }
 
     @action
-    setHomeAddress = () => {
+    setHomeAddress = (params, options) => {
         AsyncStorage.setItem('homeAddressSet' , true);
         this.isHomeSet = true;
+
+        if(params) {
+            SetAddress(params, options);
+        }
     }
+
+    @action 
+    updateUserProfileImage = (params, options) => {
+        UpdateImage(params, options);
+    }
+
 
 }
 

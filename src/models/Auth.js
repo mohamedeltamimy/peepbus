@@ -16,4 +16,10 @@ const ChangePassword = (params, options) => {
     });
 }
 
-export { Login, GetUserInfo, ChangePassword };
+const UpdateImage = (params, options) => {
+    POST('parents/update/image', params, options, {
+        authenticationUser: true
+    })
+}
+
+export { Login, GetUserInfo, ChangePassword, UpdateImage };

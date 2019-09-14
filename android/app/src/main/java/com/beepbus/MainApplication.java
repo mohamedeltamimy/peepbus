@@ -3,9 +3,9 @@ package com.beepbus;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import fr.bamlab.rnimageresizer.ImageResizerPackage;
+import com.imagepicker.ImagePickerPackage;
 import com.rnfs.RNFSPackage;
-import com.reactnativecommunity.webview.RNCWebViewPackage;
-import cl.json.RNSharePackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import io.rumors.reactnativesettings.RNSettingsPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -34,10 +34,10 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNFSPackage(),
-            new RNCWebViewPackage(),
-            new RNSharePackage(),
-            new RNDeviceInfo(),
+            new ImageResizerPackage(),
+            new ImagePickerPackage(),
+            //new RNFSPackage(),
+            //new RNDeviceInfo(),
             new RNSettingsPackage(),
             new VectorIconsPackage(),
             new ReactNativeLocalizationPackage(),

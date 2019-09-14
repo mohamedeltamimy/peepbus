@@ -45,5 +45,39 @@ const GetParentInfo = async () => {
     return info ? JSON.parse(info) : "";
 }
 
+// .. picker
+function PickImage(callback) {
+    const ImagePicker = require('react-native-image-picker');
+    const options = {
+        title: "Pick photo",
+        cancelButtonTitle: 'cancel',
+        takePhotoButtonTitle:  'Take new photo',
+        chooseFromLibraryButtonTitle: 'Pick photo from gallery',
+        mediaType: "images",
+        quality: 1,
+        storageOptions: {
+            skipBackup: true,
+            path: 'images'
+        }
+    };
 
-export { ToolbarHeight, GetUser, ShowMessage, GetParentInfo } ;
+    ImagePicker.showImagePicker(options, (response) => {
+        if (response.uri) {
+            resizeImage(response.uri, callback);
+        }
+    });
+}
+
+// .. resize Image
+function resizeImage(_image, callback) {
+    const createResizedImage = require('./imageResize').createResizedImage;
+    createResizedImage(_image, 500, 500, 'JPEG', 80).then((source) => {
+        callback(source);
+
+    }).catch((err) => {
+        console.log(err);
+        return alert('Unable to resize the photo', 'Check the console for full the error message');
+    });
+}
+
+export { ToolbarHeight, GetUser, ShowMessage, GetParentInfo, PickImage } ;

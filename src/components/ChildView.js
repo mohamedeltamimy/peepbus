@@ -21,7 +21,7 @@ class ChildView extends Component {
         const { contanier, childImageNameView, userAvatarView, userAvatarImage, userNameText, sepratorView, secondSeprator, driverView,
             driverAvatarImage, driverInfoView, driverText, busNumberView, busIcon, busNumberText, callButton, callImage } = styles;
 
-        const { name } = this.props.item.item;
+        const { name } = this.props.item;
         return (
             <Card style={contanier}>
                 <View style={childImageNameView}>
@@ -71,7 +71,8 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         elevation: 5,
         padding: 16,
-        marginLeft: 10
+        marginLeft: 10,
+        marginBottom: 10
     },
     headerText: {
         fontSize: 20,

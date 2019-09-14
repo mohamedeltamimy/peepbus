@@ -7,5 +7,6 @@
     "regluar": "Roboto-Regular",
     "medium": "Roboto-Medium"
   },
-  "baseurl": "http://35.243.244.23:8000/api/"
+  "baseurl": "http://35.243.244.23:8000/api/",
+  "socketuri": "http://35.243.244.23:3200"
 }

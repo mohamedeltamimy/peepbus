@@ -1,7 +1,9 @@
-import { POST } from './index';
+import { POST } from './restapi';
 
 const SetAddress = (params, options) => {
-    POST('')
+    POST(`parents/location/locationUpdate/update`, params, options, {
+        authenticationUser: true
+    });
 }
 
 export { SetAddress };

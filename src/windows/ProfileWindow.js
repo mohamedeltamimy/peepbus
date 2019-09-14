@@ -1,18 +1,26 @@
 import React, {Component} from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 import { Card } from 'react-native-paper';
+import { PickImage } from '../lib';
 import { L } from '../i18n';
-import { HeaderView, FooterView, TextBold, ClickAbleView, Text } from '../components';
+import { HeaderView, FooterView, TextBold, ClickAbleView, Text, Spinner } from '../components';
+import { inject, observer } from "mobx-react";
 
 class ProfileWindow extends Component {
+
+    state = {
+        userImage: require('../assets/userAvatar.png')
+    }
+
     render() {
         const { contanier, cardContanier, userNameText, userImageView, userImageCard, userAvatarImage, editIconCard, editIconView, editIcon, editPasswordView, lockIcon, passwordText, editPasswordIcon } = styles;
+        const { full_name } = this.props.user;
         return (
             <View style={contanier}>
                 <HeaderView title={L['myProfileWindowTitle']} />
                 <FooterView />
                 <Card style={cardContanier}>
-                    <TextBold style={userNameText}>{'Mahmoud Elmoghazy'}</TextBold>
+                    <TextBold style={userNameText}>{full_name}</TextBold>
                 
                     <ClickAbleView style={editPasswordView} onPress={() => {
                         const { push } = this.props.navigation;
@@ -26,15 +34,38 @@ class ProfileWindow extends Component {
                     </ClickAbleView>
                 </Card>
                 <View style={userImageCard}>
-                    <View style={userImageView}>
-                        <Image style={userAvatarImage} source={require('../assets/userAvatar.png')} />
-                    </View>
+                    <ClickAbleView style={userImageView} onPress={() => {
+                        PickImage((image) => {
+                            this.setState({
+                                userImage: {
+                                    uri: image.uri
+                                }
+                            })
+
+                            const formData = new FormData();
+                            formData.append('image', {
+                                uri: image.uri,
+                                name: 'image.jpg',
+                                type: 'multipart/form-data'
+                            })
+                            this.props.updateUserProfileImage(formData, {
+                                success: (result) => {
+                                    console.log(result);
+                                },
+                                error: () => {}
+                            });
+
+                        })
+                    }}>
+                        <Image style={userAvatarImage} source={this.state.userImage} />
+                    </ClickAbleView>
                     <Card style={editIconCard}>
                         <View style={editIconView}>
                             <Image style={editIcon} source={require('../assets/editIcon.png')} />
                         </View>
                     </Card>
                 </View>
+                {/* <Spinner /> */}
             </View>
         )
     }
@@ -118,4 +149,11 @@ const styles = StyleSheet.create({
     }
 });
 
-export { ProfileWindow };
+const ProfileWindowComponent = inject(stores => {
+    return {
+        user: stores.store.userStore.user,
+        updateUserProfileImage: stores.store.userStore.updateUserProfileImage
+    };
+})(observer(ProfileWindow));
+
+export { ProfileWindowComponent as ProfileWindow };
